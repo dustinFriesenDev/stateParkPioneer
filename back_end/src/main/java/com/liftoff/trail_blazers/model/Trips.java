@@ -19,7 +19,10 @@ public class Trips extends AbstractEntity {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date date;
     private String notes;
-    private String userName;
+
+    @ManyToOne
+    @JoinColumn(name = "user_name", nullable = false)
+    private Name userName;
 
     @ManyToMany
     private List<Plants> plants = new ArrayList<>();
@@ -27,7 +30,7 @@ public class Trips extends AbstractEntity {
     @ManyToMany
     private List<Fauna> fauna = new ArrayList<>();
 
-    public Trips(String tripName, String location, Date date, String notes, List<Plants> plants, List<Fauna> fauna, String userName) {
+    public Trips(String tripName, String location, Date date, String notes, List<Plants> plants, List<Fauna> fauna, Name userName) {
         this.tripName = tripName;
         this.location = location;
         this.date = date;
@@ -85,11 +88,11 @@ public class Trips extends AbstractEntity {
         this.fauna = fauna;
     }
 
-    public String getUserName() {
+    public Name getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(Name userName) {
         this.userName = userName;
     }
 
