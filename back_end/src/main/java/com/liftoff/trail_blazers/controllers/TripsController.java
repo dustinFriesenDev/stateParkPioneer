@@ -2,6 +2,7 @@ package com.liftoff.trail_blazers.controllers;
 
 import com.liftoff.trail_blazers.data.TripsFPRepository;
 import com.liftoff.trail_blazers.data.TripsRepository;
+import com.liftoff.trail_blazers.model.Name;
 import com.liftoff.trail_blazers.model.Trips;
 import com.liftoff.trail_blazers.model.dto.TripsFPDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,9 @@ public class TripsController {
     @Autowired
     private TripsFPRepository tripsFPRepository;
 
-    @GetMapping("/all/{userName}")
-    public List<Trips> displayAllTrips(@PathVariable String userName) {
-        return tripsRepository.findByUserName(userName);
+    @GetMapping("/all/{name}")
+    public List<Trips> displayAllTrips(@PathVariable Name name) {
+        return tripsRepository.findByName(name);
     }
 
     @PostMapping("/add")

@@ -22,7 +22,7 @@ public class Trips extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_name", nullable = false)
-    private Name userName;
+    private Name name;
 
     @ManyToMany
     private List<Plants> plants = new ArrayList<>();
@@ -30,14 +30,14 @@ public class Trips extends AbstractEntity {
     @ManyToMany
     private List<Fauna> fauna = new ArrayList<>();
 
-    public Trips(String tripName, String location, Date date, String notes, List<Plants> plants, List<Fauna> fauna, Name userName) {
+    public Trips(String tripName, String location, Date date, String notes, List<Plants> plants, List<Fauna> fauna, Name name) {
         this.tripName = tripName;
         this.location = location;
         this.date = date;
         this.notes = notes;
         this.plants = plants;
         this.fauna = fauna;
-        this.userName = userName;
+        this.name = name;
     }
 
     public Trips() {}
@@ -89,11 +89,11 @@ public class Trips extends AbstractEntity {
     }
 
     public Name getUserName() {
-        return userName;
+        return name;
     }
 
     public void setUserName(Name userName) {
-        this.userName = userName;
+        this.name = userName;
     }
 
     @Override

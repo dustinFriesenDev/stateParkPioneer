@@ -10,23 +10,23 @@ import jakarta.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table (name = "user")
+@Table (name = "name")
 public class Name extends AbstractEntity{
 
     @NotNull
-    private String username;
+    private String name;
     @NotNull
     private String email;
 
     private String password;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy="name")
     private Set<Trips> trips;
 
     private String status;
 
-    public Name(String username, String email, String password, String status) {
-        this.username = username;
+    public Name(String name, String email, String password, String status) {
+        this.name = name;
         this.email = email;
         this.password = password;
         this.status = status;
@@ -36,11 +36,11 @@ public class Name extends AbstractEntity{
     }
 
     public String getUsername() {
-        return username;
+        return name;
     }
 
     public void setUsername(String name) {
-        this.username = username;
+        this.name = name;
     }
 
     public String getEmail() {
