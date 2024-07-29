@@ -1,6 +1,5 @@
 package com.liftoff.trail_blazers.data;
 
-import com.liftoff.trail_blazers.model.Trips;
 import com.liftoff.trail_blazers.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -8,9 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TripsRepository extends JpaRepository<Trips, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    List<Trips> findById(int id);
+    public User findById(int id);
 
-    List<Trips> findByUserId(int id);
 }

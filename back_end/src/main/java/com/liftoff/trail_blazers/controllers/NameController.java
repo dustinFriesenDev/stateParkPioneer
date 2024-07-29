@@ -1,9 +1,8 @@
 package com.liftoff.trail_blazers.controllers;
 
 
-import com.liftoff.trail_blazers.data.NameRepository;
-import com.liftoff.trail_blazers.data.PlantsRepository;
-import com.liftoff.trail_blazers.model.Name;
+import com.liftoff.trail_blazers.data.UserRepository;
+import com.liftoff.trail_blazers.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +16,11 @@ import java.util.List;
 public class NameController {
 
     @Autowired
-    private NameRepository nameRepository;
+    private UserRepository userRepository;
 
-    @GetMapping("/profile")
-    public List<Name> displayProfile(@PathVariable Name name){
-        return nameRepository.findByName(name);
+    @GetMapping("/profile/{id}")
+    public User displayProfile(@PathVariable int id){
+        return userRepository.findById(id);
     }
 
 }

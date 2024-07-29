@@ -2,8 +2,8 @@ package com.liftoff.trail_blazers.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.liftoff.trail_blazers.model.Fauna;
-import com.liftoff.trail_blazers.model.Name;
 import com.liftoff.trail_blazers.model.Plants;
+import com.liftoff.trail_blazers.model.User;
 
 import java.util.Date;
 import java.util.List;
@@ -18,7 +18,7 @@ public class TripsFPDTO {
     private String notes;
     private List<Plants> plants;
     private List<Fauna> fauna;
-    private Name name;
+    private User user;
 
     public TripsFPDTO(){}
 
@@ -68,11 +68,11 @@ public class TripsFPDTO {
         this.fauna = fauna;
     }
 
-    public Name getUserName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(Name name) {
-        this.name = name;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

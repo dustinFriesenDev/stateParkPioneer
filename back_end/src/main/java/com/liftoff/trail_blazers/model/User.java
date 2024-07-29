@@ -2,45 +2,50 @@ package com.liftoff.trail_blazers.model;
 
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table (name = "name")
-public class Name extends AbstractEntity{
+@Table (name = "user")
+public class User extends AbstractEntity{
 
     @NotNull
-    private String name;
+    private String fname;
+
     @NotNull
     private String email;
 
     private String password;
 
-    @OneToMany(mappedBy="name")
-    private Set<Trips> trips;
-
     private String status;
 
-    public Name(String name, String email, String password, String status) {
-        this.name = name;
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
+    private List<Trips> trips = new ArrayList<>();
+
+    public User(String fname, String email, String password, String status) {
+        this.fname = fname;
         this.email = email;
         this.password = password;
         this.status = status;
     }
 
-    public Name() {
+    public User() {}
+
+    public @NotNull String getFname() {
+        return fname;
     }
 
-    public String getUsername() {
-        return name;
-    }
-
-    public void setUsername(String name) {
-        this.name = name;
+    public void setFname(@NotNull String fname) {
+        this.fname = fname;
     }
 
     public String getEmail() {
@@ -67,11 +72,7 @@ public class Name extends AbstractEntity{
         this.status = status;
     }
 
-    public Set<Trips> getTrips() {
+    public List<Trips> getTrips() {
         return trips;
-    }
-
-    public void setTrips(Set<Trips> trips) {
-        this.trips = trips;
     }
 }

@@ -20,9 +20,9 @@ public class Trips extends AbstractEntity {
     private Date date;
     private String notes;
 
-    @ManyToOne
-    @JoinColumn(name = "user_name", nullable = false)
-    private Name name;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToMany
     private List<Plants> plants = new ArrayList<>();
@@ -30,14 +30,14 @@ public class Trips extends AbstractEntity {
     @ManyToMany
     private List<Fauna> fauna = new ArrayList<>();
 
-    public Trips(String tripName, String location, Date date, String notes, List<Plants> plants, List<Fauna> fauna, Name name) {
+    public Trips(String tripName, String location, Date date, String notes, User user, List<Plants> plants, List<Fauna> fauna) {
         this.tripName = tripName;
         this.location = location;
         this.date = date;
         this.notes = notes;
+        this.user = user;
         this.plants = plants;
         this.fauna = fauna;
-        this.name = name;
     }
 
     public Trips() {}
@@ -88,12 +88,12 @@ public class Trips extends AbstractEntity {
         this.fauna = fauna;
     }
 
-    public Name getUserName() {
-        return name;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserName(Name userName) {
-        this.name = userName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

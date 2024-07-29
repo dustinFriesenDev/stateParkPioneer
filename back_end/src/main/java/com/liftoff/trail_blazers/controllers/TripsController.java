@@ -2,8 +2,8 @@ package com.liftoff.trail_blazers.controllers;
 
 import com.liftoff.trail_blazers.data.TripsFPRepository;
 import com.liftoff.trail_blazers.data.TripsRepository;
-import com.liftoff.trail_blazers.model.Name;
 import com.liftoff.trail_blazers.model.Trips;
+import com.liftoff.trail_blazers.model.User;
 import com.liftoff.trail_blazers.model.dto.TripsFPDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +20,9 @@ public class TripsController {
     @Autowired
     private TripsFPRepository tripsFPRepository;
 
-    @GetMapping("/all/{name}")
-    public List<Trips> displayAllTrips(@PathVariable Name name) {
-        return tripsRepository.findByName(name);
+    @GetMapping("/all/{user_id}")
+    public List<Trips> displayAllTrips(@PathVariable int user_id) {
+        return tripsRepository.findByUserId(user_id);
     }
 
     @PostMapping("/add")
@@ -33,10 +33,10 @@ public class TripsController {
         trips.setTripName(tripsFP.getTripName());
         trips.setPlants(tripsFP.getPlants());
         trips.setNotes(tripsFP.getNotes());
-        trips.setUserName((tripsFP.getUserName()));
+        trips.setUser((tripsFP.getUser()));
         trips.setFauna(tripsFP.getFauna());
         tripsRepository.save(trips);
-        return "redirect:/trip";
+        return "redirect:/all/{user_id}";
     }
 
     @PutMapping("/update/{id}")
@@ -64,7 +64,7 @@ public class TripsController {
             throw new Error("Trip not found.");
         }
         tripsRepository.deleteById(id);
-        return "redirect:/all";
+        return "redirect:/all/{user_id}";
     }
 
 }
