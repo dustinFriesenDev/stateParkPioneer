@@ -27,7 +27,7 @@ public class User extends AbstractEntity{
 
     private String status;
 
-    @OneToMany(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="user", orphanRemoval = true)
     @JsonBackReference
     private List<Trips> trips = new ArrayList<>();
 

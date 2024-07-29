@@ -20,9 +20,10 @@ public class TripsController {
     @Autowired
     private TripsFPRepository tripsFPRepository;
 
-    @GetMapping("/all/{user_id}")
-    public List<Trips> displayAllTrips(@PathVariable int user_id) {
-        return tripsRepository.findByUserId(user_id);
+    @GetMapping("/all/{id}")
+    public List<Trips> displayAllTrips(@PathVariable int id) {
+        return tripsRepository.findByUserId(id);
+
     }
 
     @PostMapping("/add")
@@ -36,7 +37,7 @@ public class TripsController {
         trips.setUser((tripsFP.getUser()));
         trips.setFauna(tripsFP.getFauna());
         tripsRepository.save(trips);
-        return "redirect:/all/{user_id}";
+        return "redirect:/all/{id}";
     }
 
     @PutMapping("/update/{id}")

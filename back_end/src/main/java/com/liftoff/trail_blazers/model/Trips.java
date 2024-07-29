@@ -20,7 +20,7 @@ public class Trips extends AbstractEntity {
     private Date date;
     private String notes;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
