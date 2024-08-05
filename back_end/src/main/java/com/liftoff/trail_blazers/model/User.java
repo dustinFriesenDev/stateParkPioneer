@@ -11,16 +11,16 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
 @Table (name = "user")
 public class User extends AbstractEntity{
 
-    @NotNull
+
     private String fname;
 
-    @NotNull
     private String email;
 
     private String password;
@@ -40,11 +40,11 @@ public class User extends AbstractEntity{
 
     public User() {}
 
-    public @NotNull String getFname() {
+    public String getFname() {
         return fname;
     }
 
-    public void setFname(@NotNull String fname) {
+    public void setFname(String fname) {
         this.fname = fname;
     }
 
@@ -74,5 +74,10 @@ public class User extends AbstractEntity{
 
     public List<Trips> getTrips() {
         return trips;
+    }
+
+    @Override
+    public String toString() {
+        return fname;
     }
 }

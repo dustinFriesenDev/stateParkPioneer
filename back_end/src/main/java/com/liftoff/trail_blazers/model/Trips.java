@@ -1,10 +1,7 @@
 package com.liftoff.trail_blazers.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
-
 
 import java.util.ArrayList;
 import java.util.Date;
