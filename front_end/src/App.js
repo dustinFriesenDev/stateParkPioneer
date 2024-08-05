@@ -1,7 +1,5 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
-
 import Header from './components/nav/Header.js';
 import Home from './components/pages/Home.js'
 import Animals from './components/pages/animals/Animals.js';
@@ -17,7 +15,6 @@ import './components/nav/Header.css';
 import './components/auth/Auth.css';
 
 function App() {
-  const { isLoading, error, isAuthenticated } = useAuth0();
   
   return (
     <main>
@@ -28,24 +25,12 @@ function App() {
         <Route path='/weather' element={<Weather/>} />
         <Route path='/animals' element={<Animals/>} /> 
         <Route path='/plants' element={<Plants/>} />
-        
-        {/* Show these pages only if the user is authenticated */}
-        {isAuthenticated && (
-          <>
-            <Route path='/trip' element={<Trip/>} />
-            <Route path='/profile' element={<Profile/>} />
-          </>
-        )}
+        <Route path='/trip' element={<Trip/>} />
+        <Route path='/profile' element={<Profile/>} />
       </Routes>
-        <Footer />
-    {error && <p>Authentication Error</p>}
-    {!error && isLoading && <p>Loading...</p>}
-    {!error && !isLoading && (
-      <>
-          <LoginButton/>
-          <LogoutButton/>
-      </>
-    )}
+      <Footer />
+      <LoginButton/>
+      <LogoutButton/>
     </main>
   );
 }
