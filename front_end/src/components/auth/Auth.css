@@ -1,3 +1,35 @@
+.flex-login {
+  display: flex;
+  
+}
+
+.left-sidebar {
+  width: 33%;
+}
+
+.signup-login-container {
+  width: 33%;
+  height: 300px;
+  margin-top: 100px;
+}
+
+.right-sidebar {
+  width: 33%;
+}
+
+h2 {
+  text-align: center;
+}
+
+div {
+  color: #85AB49;
+}
+
+.instructions {
+  margin: auto;
+  width: 300px;
+}
+
 .login-button {
   padding: 0;
   background-color: transparent;

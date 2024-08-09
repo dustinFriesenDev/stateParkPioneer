@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'; 
 import csvData from '../../../databases/park_locations/MO_State_Park_and_Historic_Sites_Trails.csv';
 import "./historystyles.css";
-import { useAuth0 } from '@auth0/auth0-react';
 
 const HikeForm = ({ onSubmit, selectedHike, onEdit }) => {
   const [id, setId] = useState("");
@@ -11,6 +10,7 @@ const HikeForm = ({ onSubmit, selectedHike, onEdit }) => {
   const [notes, setNotes] = useState("");
   const [locations, setLocations] = useState([]);
   const [plants, setPlants] = useState([]);
+  const [fname] = useState("");
   const [val, setVal] = useState("");
   const [data, setData] = useState([]);
   const [click, setClick] = useState("");
@@ -19,8 +19,6 @@ const HikeForm = ({ onSubmit, selectedHike, onEdit }) => {
   const [animals, setAnimals] = useState([]);
   const [clickedAnimal, setClickedAnimal] = useState("");
   const [toggle, setToggle] = useState(true);
-  const { user } = useAuth0();
-  const [userName] = useState(user.name);
 
   const FORM_ENDPOINT = "http://localhost:8080/trips/add";
   const urlPlants = "http://localhost:8080/plants";
@@ -89,7 +87,7 @@ const HikeForm = ({ onSubmit, selectedHike, onEdit }) => {
       "notes": notes,
       "plants": plants,
       "fauna": fauna,
-      "userName" : userName
+      "fname" : fname
     };
 
     fetch(finalFormEndpoint, {
@@ -104,7 +102,7 @@ const HikeForm = ({ onSubmit, selectedHike, onEdit }) => {
     if (selectedHike) {
       onEdit({...selectedHike, tripName, location, date, notes, plants, fauna,});
     } else {
-      onSubmit({ tripName, location, date, notes, plants, fauna, userName });
+      onSubmit({ tripName, location, date, notes, plants, fauna, fname });
     }
 
     // Reset form fields

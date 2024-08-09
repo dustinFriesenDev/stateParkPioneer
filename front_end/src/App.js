@@ -10,6 +10,7 @@ import Trip from './components/pages/Trip.js';
 import LoginButton from './components/auth/LoginButton.js';
 import LogoutButton from './components/auth/LogoutButton.js';
 import Profile from './components/auth/Profile.js';
+import Login from './components/auth/LoginButton.js';
 import Footer from './components/nav/Footer.js';
 import './components/nav/Header.css';
 import './components/auth/Auth.css';
@@ -27,10 +28,9 @@ function App() {
         <Route path='/plants' element={<Plants/>} />
         <Route path='/trip' element={<Trip/>} />
         <Route path='/profile' element={<Profile/>} />
+        <Route path='/login' element={<Login />}/>
       </Routes>
       <Footer />
-      <LoginButton/>
-      <LogoutButton/>
     </main>
   );
 }

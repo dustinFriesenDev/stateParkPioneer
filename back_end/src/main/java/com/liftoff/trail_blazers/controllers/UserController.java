@@ -16,12 +16,12 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/profile/{id}")
-    public Optional<User> displayProfile(@PathVariable int id){
-        return userRepository.findById(id);
+    @GetMapping("/profile/{email}")
+    public User displayProfile(@PathVariable String email){
+        return userRepository.findByEmail(email);
     }
 
-    @PutMapping("/login/{id}")
+    @PutMapping("/login/{email}")
     public User logIn(@PathVariable int id, @RequestBody User loginUser) {
         return userRepository.findById(id)
                 .map(user -> {
